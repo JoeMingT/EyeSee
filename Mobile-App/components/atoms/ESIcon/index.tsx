@@ -1,4 +1,4 @@
-import { Icon } from '@ui-kitten/components';
+import { Icon } from '@gluestack-ui/themed';
 import { ESIconProps } from './props';
 
 const ESIcon: React.FC<ESIconProps> = (props) => {

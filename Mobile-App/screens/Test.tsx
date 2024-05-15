@@ -13,7 +13,7 @@ const Test: React.FC<any> = () => {
 
   return (
     <GestureDetector gesture={testGesture}>
-      <View style={{ backgroundColor: 'plum' }}></View>
+      <View style={{ backgroundColor: 'plum', flex: 1 }}></View>
     </GestureDetector>
   );
 };

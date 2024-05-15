@@ -1,3 +1,3 @@
-import { DividerProps } from '@ui-kitten/components';
-
-export interface ESDividerProps extends DividerProps {}
+import { ComponentProps } from 'react';
+import { Divider } from '@gluestack-ui/themed';
+export interface ESDividerProps extends ComponentProps<typeof Divider> {}

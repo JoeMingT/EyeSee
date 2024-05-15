@@ -1,11 +1,11 @@
-import { Layout } from '@ui-kitten/components';
 import { ESScreenWrapperProps } from './props';
+import { Box } from '@gluestack-ui/themed';
 
 const ESScreenWrapper: React.FC<ESScreenWrapperProps> = (props) => {
   return (
-    <Layout collapsable={false} style={{ paddingVertical: 15, flex: 1 }} {...props}>
-      {props.children}
-    </Layout>
+    <Box style={{ paddingVertical: 15, flex: 1 }} {...props}>
+      {}
+    </Box>
   );
 };
 

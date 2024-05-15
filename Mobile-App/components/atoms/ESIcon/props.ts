@@ -1,5 +1,4 @@
-import { IconProps } from '@ui-kitten/components';
+import { Icon } from '@gluestack-ui/themed';
+import { ComponentProps } from 'react';
 
-export interface ESIconProps extends IconProps {
-  name: string;
-}
+export interface ESIconProps extends ComponentProps<typeof Icon> {}
