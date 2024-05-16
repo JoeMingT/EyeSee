@@ -1,10 +1,10 @@
-import { Text } from '@ui-kitten/components';
+import { Text } from '@gluestack-ui/themed';
 import { ESTextProps } from './props';
 
 const ESText: React.FC<ESTextProps> = (props) => {
   const { children, ...textProps } = props;
   return (
-    <Text style={{ fontSize: 20 }} {...textProps}>
+    <Text {...textProps}>
       {children}
     </Text>
   );

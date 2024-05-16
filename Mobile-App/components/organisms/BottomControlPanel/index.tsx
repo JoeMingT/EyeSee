@@ -1,11 +1,11 @@
 import { ESText } from '@ESComponents/atoms';
-import { Layout, Button } from '@ui-kitten/components';
+import { Box, Button } from '@gluestack-ui/themed';
 
 const BottomControlPanel: React.FC<any> = (props) => {
   const { onButtonPress } = props;
 
   return (
-    <Layout
+    <Box
       style={{
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -19,13 +19,12 @@ const BottomControlPanel: React.FC<any> = (props) => {
       </Button>
       <Button
         style={{ borderRadius: 50, padding: 12 }}
-        size="giant"
         onPress={onButtonPress}
       ></Button>
       <Button>
         <ESText>Album</ESText>
       </Button>
-    </Layout>
+    </Box>
   );
 };
 
