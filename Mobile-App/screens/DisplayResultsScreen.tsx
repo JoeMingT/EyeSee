@@ -7,14 +7,18 @@ const DisplayResultsScreen: React.FC<NativeStackScreenProps<RootStackParamList, 
   props
 ) => {
   const { navigation, route } = props;
-  const imageData = route.params?.img;
+
+  const imageUri = route.params?.imageUri;
   const results = route.params?.results;
+  const date = route.params?.date;
+  const type = route.params?.type;
+
   return (
     <VStack flex={1}>
       <Box flex={2}>
         <Image
-          source={{ uri: imageData.uri }}
-          alt="Image Taken"
+          source={{ uri: imageUri }}
+          alt="Taken Image Preview"
           contentFit={'cover'}
           contentPosition={'center'}
           style={{ flex: 1 }}
@@ -29,7 +33,7 @@ const DisplayResultsScreen: React.FC<NativeStackScreenProps<RootStackParamList, 
             variant="outline"
             flex={1}
             onPress={() => {
-              navigation.navigate('Home');
+              navigation.navigate('Take Picture');
             }}
           >
             <ButtonText underline>Back</ButtonText>
@@ -41,7 +45,12 @@ const DisplayResultsScreen: React.FC<NativeStackScreenProps<RootStackParamList, 
             variant="outline"
             flex={1}
             onPress={() => {
-              navigation.navigate('Download Result', { img: imageData });
+              navigation.navigate('Download Result', {
+                imageUri,
+                results,
+                date,
+                type,
+              });
             }}
           >
             <ButtonText underline>Download</ButtonText>

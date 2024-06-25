@@ -1,0 +1,4 @@
+Swipe Left for Previous
+Swipe Right for Next
+Double Tap for Select
+Two Finger One Tap for Play/Pause

@@ -15,6 +15,7 @@ import { RootDrawerParamList, RootStackParamList } from './types/ReactNavigation
 
 import { AppRegistry } from 'react-native';
 import { expo } from './app.json';
+import PermissionsScreen from './screens/PermissionsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -35,11 +36,14 @@ export default function App() {
         <GestureHandlerRootView>
           <ESScreenWrapper>
             <Stack.Navigator>
-              <Stack.Screen
+              <Stack.Screen name="Permissions" component={PermissionsScreen} />
+              {/* <Stack.Screen
                 name="Home"
                 component={DrawerScreens}
                 options={{ headerShown: false }}
-              />
+              /> */}
+              <Stack.Screen name="Take Picture" component={TakePictureScreen} />
+              <Stack.Screen name="History" component={ViewHistoryScreen} />
               <Stack.Screen name="View Result" component={DisplayResultsScreen} />
               <Stack.Screen name="Download Result" component={DownloadResultsScreen} />
             </Stack.Navigator>
