@@ -1,9 +1,17 @@
 import { ESScreenWrapperProps } from './props';
 import { Box } from '@gluestack-ui/themed';
-import { GestureDetector, Gesture, Directions } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import {
+  GestureDetector,
+  Gesture,
+  Directions,
+  GestureHandlerRootView,
+} from 'react-native-gesture-handler';
 
 const ESScreenWrapper: React.FC<ESScreenWrapperProps> = (props) => {
   const { children, ...boxProps } = props;
+  const navigation = useNavigation();
+
   const select = Gesture.Tap()
     .numberOfTaps(2)
     .onStart(() => {
@@ -26,14 +34,17 @@ const ESScreenWrapper: React.FC<ESScreenWrapperProps> = (props) => {
     .direction(Directions.UP)
     .onStart(() => {
       console.log('Swiped Up');
+      navigation.push('Upload Files');
     });
 
   return (
-    <GestureDetector gesture={Gesture.Exclusive(select, nextItem, prevItem, voiceCommand)}>
-      <Box flex={1} {...boxProps}>
-        {children}
-      </Box>
-    </GestureDetector>
+    <GestureHandlerRootView>
+      <GestureDetector gesture={Gesture.Exclusive(select, nextItem, prevItem, voiceCommand)}>
+        <Box flex={1} {...boxProps}>
+          {children}
+        </Box>
+      </GestureDetector>
+    </GestureHandlerRootView>
   );
 };
 

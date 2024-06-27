@@ -1,11 +1,10 @@
 import { config } from '@gluestack-ui/config';
-import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { Box, Button, GluestackUIProvider, Icon } from '@gluestack-ui/themed';
 import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ESScreenWrapper } from '@ESComponents/atoms';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 import ViewHistoryScreen from './screens/ViewHistoryScreen';
 import TakePictureScreen from './screens/TakePictureScreen';
@@ -16,6 +15,9 @@ import { RootDrawerParamList, RootStackParamList } from './types/ReactNavigation
 import { AppRegistry } from 'react-native';
 import { expo } from './app.json';
 import PermissionsScreen from './screens/PermissionsScreen';
+import UploadFilesScreen from './screens/UploadFilesScreen';
+import { ImageIcon, ImagePlusIcon, UploadIcon } from 'lucide-react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -33,22 +35,19 @@ export default function App() {
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
-        <GestureHandlerRootView>
-          <ESScreenWrapper>
-            <Stack.Navigator>
-              <Stack.Screen name="Permissions" component={PermissionsScreen} />
-              {/* <Stack.Screen
+        <Stack.Navigator>
+          <Stack.Screen name="Permissions" component={PermissionsScreen} />
+          {/* <Stack.Screen
                 name="Home"
                 component={DrawerScreens}
                 options={{ headerShown: false }}
               /> */}
-              <Stack.Screen name="Take Picture" component={TakePictureScreen} />
-              <Stack.Screen name="History" component={ViewHistoryScreen} />
-              <Stack.Screen name="View Result" component={DisplayResultsScreen} />
-              <Stack.Screen name="Download Result" component={DownloadResultsScreen} />
-            </Stack.Navigator>
-          </ESScreenWrapper>
-        </GestureHandlerRootView>
+          <Stack.Screen name="Take Picture" component={TakePictureScreen} />
+          <Stack.Screen name="History" component={ViewHistoryScreen} />
+          <Stack.Screen name="View Result" component={DisplayResultsScreen} />
+          <Stack.Screen name="Download Result" component={DownloadResultsScreen} />
+          <Stack.Screen name="Upload Files" component={UploadFilesScreen} />
+        </Stack.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>
   );

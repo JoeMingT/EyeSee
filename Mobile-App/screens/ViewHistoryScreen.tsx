@@ -3,13 +3,16 @@ import { Avatar, Icon, Image, Pressable, ScrollView, Text } from '@gluestack-ui/
 import { Box, HStack, VStack } from '@gluestack-ui/themed';
 import { FlatList } from 'react-native-gesture-handler';
 import { ArrowRightIcon } from 'lucide-react-native';
-import { RootDrawerParamList } from '@EyeSee/types/ReactNavigationTypes';
+import { RootDrawerParamList, RootStackParamList } from '@EyeSee/types/ReactNavigationTypes';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { useLocalData } from '@EyeSee/hooks/useLocalData';
 import React, { useCallback, useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const ViewHistoryScreen: React.FC<DrawerScreenProps<RootDrawerParamList, 'History'>> = (props) => {
+const ViewHistoryScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'History'>> = (
+  props
+) => {
   const { navigation, route } = props;
 
   const { localData, readLocalDataFromDB } = useLocalData();

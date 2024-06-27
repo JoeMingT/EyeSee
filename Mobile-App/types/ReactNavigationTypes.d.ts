@@ -17,6 +17,9 @@ type RootStackParamList = {
   };
   'Take Picture': undefined;
   History: undefined;
+  'Upload Files': {
+    currentMode: 'Describe Scene' | 'Detect Text' | 'Detect Objects';
+  };
 };
 
 type RootDrawerParamList = {
