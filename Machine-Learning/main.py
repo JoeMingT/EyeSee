@@ -4,8 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf 
 from tensorflow.keras.preprocessing.text import Tokenizer
 import pickle
-
-
 import uvicorn
 import base64
 
@@ -40,14 +38,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event('startup')
-def init_data():
-    print("init call")
-    # model_data["encoder"] = encoder
-    # model_data["decoder"] = decoder
-    # model_data["image_features_extract_model"] = image_features_extract_model
-    # model_data["tokenizer"] = tokenizer
-    # return model_data
 
 def load_images(image_path):
     img = tf.io.read_file(image_path, name = None)

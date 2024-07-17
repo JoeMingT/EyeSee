@@ -85,6 +85,24 @@ const UploadFilesScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Up
     }
 
     if (currentMode === 'Describe Scene') {
+      console.log('Entered');
+      const imgCaptionUrl = 'http://192.168.0.108:8000/captions';
+
+      const requestData = {
+        imgdata: imageData as string
+      }
+
+      const response = await fetch(imgCaptionUrl, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      }).catch(() => speak('Error! Operation Failed! Please Try Again!'));
+      console.log('Succeed');
+      const result = await response.json();
+      return result.captions
     }
 
     if (currentMode === 'Detect Objects') {
