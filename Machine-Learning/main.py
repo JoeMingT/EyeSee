@@ -79,6 +79,8 @@ async def root():
 
 @app.post("/captions")
 async def generate_captions(body: ImageCaptioningBody):
+    print("Endpoint Reached")
+    print("Decoding Image")
     image_as_str = body.imgdata
     image_as_bytes = str.encode(image_as_str)  # convert string to bytes
     img_recovered = base64.b64decode(image_as_bytes)  # decode base64string
@@ -88,6 +90,7 @@ async def generate_captions(body: ImageCaptioningBody):
     except Exception:
         return {"message": "There was an error uploading the file"}
     
+    print("Predicting Image")
     try:
         (result, pred_test) = evaluate("uploaded_image.jpg")
         pred_caption = ' '.join(result).rsplit(' ', 1)[0]
@@ -95,6 +98,7 @@ async def generate_captions(body: ImageCaptioningBody):
     except Exception:
         print(Exception)
         return {"message": "There was an error generating captions for the image", "err": Exception}
+    print("Deleting")
     return {"message": f"Successfuly uploaded image"} 
 
 

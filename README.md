@@ -69,6 +69,7 @@ After setting up your environments and ensure that they can run, there are a few
 ### Changing IP to match Server's IP
 
 You are required to change the IP in `/Mobile-App/screens/TakePictureScreen.tsx` and `/Mobile-App/screens/UploadFilesScreen.tsx` in the function `processData`, specifically the line `const imgCaptionUrl = 'http://192.168.16.15:8000/captions';` and modify the current IP to match the IPv4 of your laptop or desktop device. You can check for your laptop or desktop IP using `ipconfig` or similar tools that can be found online. If you are using an Android emulator, you can ping to `localhost` or `127.0.0.1` instead.
+Remember to add a `:8000` at the end of the IP.
 
 This is because your physical Android Device has a different IP address and it could not be able to ping to your laptop or desktop directly without knowing the actual IP address of the laptop.
 

@@ -86,7 +86,7 @@ const UploadFilesScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Up
 
     if (currentMode === 'Describe Scene') {
       console.log('Entered');
-      const imgCaptionUrl = 'http://192.168.0.108:8000/captions';
+      const imgCaptionUrl = 'http://192.168.138.15:8000/captions';
 
       const requestData = {
         imgdata: imageData as string

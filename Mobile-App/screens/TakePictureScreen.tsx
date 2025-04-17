@@ -92,7 +92,7 @@ const TakePictureScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Ta
         },
         body: JSON.stringify(requestData),
       }).catch(() => speak('Error! Operation Failed! Please Try Again!'));
-      const result = await response.json();
+      const result = await response?.json();
       console.log(result);
       const detectedText = result.responses[0].fullTextAnnotation.text;
       return detectedText ? detectedText : "This image doesn't contain any text! Please try again!";
@@ -100,7 +100,7 @@ const TakePictureScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Ta
 
     if (currentMode === 'Describe Scene') {
       console.log('Entered');
-      const imgCaptionUrl = 'http://192.168.0.108:8000/captions';
+      const imgCaptionUrl = 'http://192.168.138.15:8000/captions';
 
       const requestData = {
         imgdata: imageData as string
@@ -115,7 +115,7 @@ const TakePictureScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Ta
         body: JSON.stringify(requestData),
       }).catch(() => speak('Error! Operation Failed! Please Try Again!'));
       console.log('Succeed');
-      const result = await response.json();
+      const result = await response?.json();
       return result.captions
     }
 
@@ -146,7 +146,7 @@ const TakePictureScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Ta
         },
         body: JSON.stringify(requestData),
       }).catch(() => speak('Error! Operation Failed! Please Try Again!'));
-      const result = await response.json();
+      const result = await response?.json();
 
       // Further post-processing after getting results (Because it returns a bunch of other stuff as well.)
       // First, get the array of objects detected
