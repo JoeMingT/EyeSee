@@ -36,7 +36,7 @@ This system has **multiple prerequisites that are required** in order to install
 
 ### Installation Procedure
 
-##### Step 1: Clone the Repository
+#### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/JoeMingT/EyeSee.git
@@ -44,7 +44,7 @@ git clone https://github.com/JoeMingT/EyeSee.git
 git clone git@github.com:JoeMingT/EyeSee.git
 ```
 
-##### Step 2: Download dependencies
+#### Step 2: Download dependencies
 
 ```bash
 # Install packages
@@ -62,7 +62,7 @@ pip install -r requirements
 cd ..
 ```
 
-##### Step 3: Starting the Machine Learning Server
+#### Step 3: Starting the Machine Learning Server
 
 ```bash
 cd Machine-Learning
@@ -71,7 +71,7 @@ python main.py
 
 The server will **start in your laptop/desktop device's port 8000**. Meaning `localhost:8000`.
 
-##### Step 4: Starting the Mobile Application Server
+#### Step 4: Starting the Mobile Application Server
 
 ```bash
 cd Mobile-App
@@ -80,15 +80,17 @@ npm run start
 
 The **server will start and a QR code will be presented**. Make sure that you **did not switch off the Machine Learning Server** from Step 3, you'll need **both running simultaneously** for the application to work properly.
 
-#### Method 1: Running on your own Mobile Device
+<br />
+
+### Method 1: Running on your own Mobile Device
 
 There are 2 ways to run the mobile application, this is one of the methods. In this section, I'll guide you through on **how to run the application on your mobile device**.
 
-##### Step 5.1: Connect to the Same Network
+#### Step 5.1: Connect to the Same Network
 
 Ensure that **both your laptop/desktop device are connected to the same network (Wifi, Hotspot) as your mobile phone**.
 
-##### Step 5.2: Configure Some settings
+#### Step 5.2: Configure Some settings
 
 There are **two lines within the codebase that requires manual tweaking** due to how the code functions. The changes are required to be done in the following files:
 - `./Mobile-App/screens/TakePictureScreen.tsx`
@@ -112,29 +114,31 @@ ip address
 For example, if my IPv4 is `194.164.222.11`, I will configure the line to:
 - `const imgCaptionUrl = 'http://194.164.222.11:8000/captions'`
 
-##### Step 5.3: Download the Required .apk FIles
+#### Step 5.3: Download the Required .apk FIles
 
 Finally, you are required to **download the Expo Go version that is appropriate to the version of Expo that is running**. Unfortunately, you could not use the latest version of Expo Go published in the App Store as the codebase is outdated. Instead you are **required to download the older version of the app in `.apk` format and install the app** that way. The download link can be obtained [here](https://expo.dev/go?sdkVersion=51&platform=android&device=true).
 
-##### Step 5.4: Running the Mobile Application On Your Mobile Phone
+#### Step 5.4: Running the Mobile Application On Your Mobile Phone
 
 Once you have **installed the application, launch it, and scan the QR code** using the application. And congratulations! The mobile application is now running on your phone!
 
-#### Method 2: Running on an Android Simulator
+<br/>
+
+### Method 2: Running on an Android Simulator
 
 There are 2 ways to run the mobile application, this is one of the methods. Through this method, you will be **running the mobile application through an Android Simulator**, installed and configured **from Android Studio**.
 
-##### Step 6.1: Install Android Studio.
+#### Step 6.1: Install Android Studio.
 
 **Download and install Android Studio** on your device. The download link for Android Studio is [here](https://developer.android.com/studio).
 
-##### Step 6.2: Install the Android Emulator
+#### Step 6.2: Install the Android Emulator
 
 **Download and install an Android Emulator** of your choice. It could an emulator for any devices that you prefer. A full guide and instruction on how to download and install the emulator can be seen [here](https://developer.android.com/studio/run/emulator).
  
 A full guide made by Expo can be seen [here](https://docs.expo.dev/workflow/android-studio-emulator/).
 
-##### Step 6.3: Configure some settings.
+#### Step 6.3: Configure some settings.
 
 There are **two lines within the codebase that requires manual tweaking** due to how the code functions. The changes are required to be done in the following files:
 - `/Mobile-App/screens/TakePictureScreen.tsx`
@@ -148,9 +152,8 @@ You are **required to change the IP address** within it to `localhost` or `0.0.0
 
 As you are running the whole thing locally within a single device, you may use `localhost` for your url.
 
-##### Step 6.4: Run the Application
+#### Step 6.4: Run the Application
 
 In Expo, it can **automatically detect an Android emulator** as long as it is currently running. **Return to Expo's server (with the QR code) and press `a`** which will build the application in your Android emulator automatically. A guide made by Expo can be seen [here](https://docs.expo.dev/get-started/set-up-your-environment/?platform=android&device=simulated#install-expo-go).
 
-<br>
 
