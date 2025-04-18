@@ -156,4 +156,11 @@ As you are running the whole thing locally within a single device, you may use `
 
 In Expo, it can **automatically detect an Android emulator** as long as it is currently running. **Return to Expo's server (with the QR code) and press `a`** which will build the application in your Android emulator automatically. A guide made by Expo can be seen [here](https://docs.expo.dev/get-started/set-up-your-environment/?platform=android&device=simulated#install-expo-go).
 
+## Screenshots
 
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+I would like to extend a heartfelt thanks to my supervisor for the project, Mrs. Zarina binti Che Embi, for providing guidance, assistance and advice throughout the project's lifespan. The project would not have been possible without her help. Thank you to all of my friends and family as well for supporting me throughout the project.
