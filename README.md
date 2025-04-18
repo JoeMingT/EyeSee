@@ -1,80 +1,156 @@
-# Final-Year-Project: Image Captioning Application for the Visually Impaired
+# EyeSee: Image Captioning Application for the Visually Impaired
 
-This is the Final Year Project repository for my university course. In this readme file, there will be guide on how to run the software and how to set it up in order to test it on your own device.
+EyeSee is an mobile application meant to assist the people who are visually impaired to make out their surroundings guide them. This is my final year project submission for my university course. This repository contains both the source code for the mobile application and a pre-trained machine leaning model for image captioning (hence the large size).
 
-This is a Mobile Application made mainly for Android devices. There are 2 different folders in this repositories and you are required to set up both. One is for the frontend, which is the client-side mobile device, the other is for the backend, which is the server-side, used to generate results from the image. We will go through each folder and how to set up each of them separately.
+**System tested on:** <br/>
+**OS:** Arch Linux x86_64, Linux LTS 6.12.21, Hyprland, Wayland Compositor <br/>
+**Processor:** Intel® Core™ i5-1035G1 CPU <br/>
+**Memory:** 8Gb of RAM <br/>
+**Graphics:** Intel Iris Plus Graphics G1 <br/>
+
+**Software Versions:** <br/>
+Python v3.11.12 <br/>
+pip v24.0 <br/>
+Node v23.9.0 <br/>
+npm v11.2.0 <br/>
+
+> [!warning]
+> <b>THIS APPLICATION IS NOT IN DEVELOPMENT ANYMORE. IF THERE ARE ISSUES RUNNING THE CODE, REVERT TO AN OLDER VERSION OF DEPENDENCIES/PACKAGES SHOULD RESOLVE IT.</b>
+
+---
 
 <br>
+<br>
 
-## Mobile-App
+## Installation Guide
+
+In this section, I will walk you through on how to download the repository locally, download the necessary packages, download the necessary android package file (.apk), and configure some settings in order to make the whole system work.
 
 ### Prerequisites
 
-This system utilises Node and Node Package Manager (NPM) and assumes that you have already installed the necessary items in your laptop or desktop devices. Furthermore, this system assumes that you have an Android emulator installed in your computer and configured properly or a physical Android device.
+This system has multiple prerequisites that are required in order to install all the required packages and dependencies. The list of prerequisites are as follows:
+- `python` version 10.0.0 to 12.0.0 (with `pip`) as tensorflow has not supported v13.0.0. Check what version tensorflow [here](https://www.tensorflow.org/install/pip#software_requirements). Download python [here](https://www.python.org/downloads/).
+- `Node.js` version 20.0.0 and above (with `node`). Download Node [here](https://nodejs.org/en/download).
 
 <br>
 
 ### Installation Procedure
 
-First, navigate to the `Mobile-App` folder using the console of your choice. Then, type `npm install --force`, which will install all the necessary packages listed in the `packages.json` file. It will take some time as it installs so please wait patiently.
+##### Step 1: Clone the Repository
 
-If you are using a physical Android device, you are also required to install an App from the Google Play Store called `Expo Go` in order to run the application on your mobile device. The version that I used was `v2.31.1` and any difference in version may cause incompatibility.
+```bash
+git clone https://github.com/JoeMingT/EyeSee.git
+# or
+git clone git@github.com:JoeMingT/EyeSee.git
+```
+
+##### Step 2: Download dependencies
+
+```bash
+# Install packages
+cd Machine-Learning
+npm i --force
+
+# Install dependencies
+cd ../Mobile-App
+### If want to create virtual environment
+# python -m venv .venv
+# source .venv/bin/activate
+pip install -r requirements
+
+# Return to Root Folder
+cd ..
+```
+
+##### Step 3: Starting the Machine Learning Server
+
+```bash
+cd Machine-Learning
+python main.py
+```
+
+The server will start in your laptop/desktop device's port 8000. Meaning `localhost:8000`.
+
+##### Step 4: Starting the Mobile Application Server
+
+```bash
+cd Mobile-App
+npm run start
+```
+
+The server will start and a QR code will be presented. Make sure that you did not switch off the Machine Learning Server from Step 3, you'll need both running simultaneously for the application to work properly.
+
+#### Running on your own Mobile Device
+
+There are 2 ways to run the mobile application, this is one of the methods. In this section, I'll guide you through on how to run the application on your mobile device.
+
+##### Step 5.1: Connect to the Same Network
+
+Ensure that both your laptop/desktop device are connected to the same network (Wifi, Hotspot) as your mobile phone.
+
+##### Step 5.2: Configure Some settings
+
+There are two lines within the codebase that requires manual tweaking due to how the code functions. The changes are required to be done in the following files:
+- `./Mobile-App/screens/TakePictureScreen.tsx`
+- `./Mobile-App/screens/UploadFilesScreen.tsx`
+
+There is a line within both files that is as follows (the IP may differ from the example but it should look something as shown): 
+- `const imgCaptionUrl = 'http://192.168.16.15:8000/captions';`
+
+You are required to change the IP above to your laptop/desktop device's IPv4. This is due to the fact that your MOBILE PHONE is a different device and is not LOCAL HOST, meaning it'll need your laptop/desktop device's IP to reach the servers you have spun up in there.
+
+You may obtain your devices IPv4 typing the command line below. A full guide can be seen [here](https://www.whatismybrowser.com/detect/what-is-my-local-ip-address/)
+
+```bash
+# Get IP address only, not IPv6
+# Windows
+ipconfig
+# Linux
+ip address
+```
+
+For example, if my IPv4 is `194.164.222.11`, I will configure the line to:
+- `const imgCaptionUrl = 'http://194.164.222.11:8000/captions'`
+
+##### Step 5.3: Download the Required .apk FIles
+
+Finally, you are required to download the Expo Go version that is appropriate to the version of Expo that is running. Unfortunately, you could not use the latest version of Expo Go published in the App Store as the codebase is outdated. Instead you are required to download the older version of the app in `.apk` format and install the app that way. The download link can be obtained [here](https://expo.dev/go?sdkVersion=51&platform=android&device=true).
+
+##### Step 5.4: Running the Mobile Application On Your Mobile Phone
+
+Once you have installed the application, launch it, and scan the QR code using the application. And congratulations! The mobile application is now running on your phone!
+
+#### Running on an Android Simulator
+
+There are 2 ways to run the mobile application, this is one of the methods. Through this method, you will be running the mobile application through an Android Simulator, installed and configured from Android Studio.
+
+##### Step 6.1: Install Android Studio.
+
+Download and install Android Studio on your device. The download link for Android Studio is [here](https://developer.android.com/studio).
+
+##### Step 6.2: Install the Android Emulator
+
+Download and install an Android Emulator of your choice. It could an emulator for any devices that you prefer. A full guide and instruction on how to download and install the emulator can be seen [here](https://developer.android.com/studio/run/emulator).
+ 
+A full guide made by Expo can be seen [here](https://docs.expo.dev/workflow/android-studio-emulator/).
+
+##### Step 6.3: Configure some settings.
+
+There are two lines within the codebase that requires manual tweaking due to how the code functions. The changes are required to be done in the following files:
+- `/Mobile-App/screens/TakePictureScreen.tsx`
+- `/Mobile-App/screens/UploadFilesScreen.tsx`
+
+There is a line within both files that is as follows (the IP may differ from the example shown but it should look something as shown): 
+- `const imgCaptionUrl = 'http://192.168.16.15:8000/captions';`
+
+You are required to change the IP address within it to `localhost` or `0.0.0.0`. Either one works.
+- `const imgCaptionUrl = 'http://localhost:8000/captions';`
+
+As you are running the whole thing locally within a single device, you may use `localhost` for your url.
+
+##### Step 6.4: Run the Application
+
+In Expo, it can automatically detect an Android emulator as long as it is currently running. Return to Expo's server (with a QR code) and press `a` which will build the application in your Android emulator. A guide made by Expo can be seen [here](https://docs.expo.dev/get-started/set-up-your-environment/?platform=android&device=simulated#install-expo-go).
 
 <br>
 
-### Starting the Server
-
-Finally, we have to start the server in order to run the application. If you have everything set up properly, running `npm run start` will trigger Expo and it will bundle the application and serve it. A QR code with text will be displayed once it is ready like so:
-
-![Example Image](image.png)
-
-Afterwards, depending on your mobile device you will do different things. If you are running an android emulator, type `a` while in the console, which will install it into the emulator. If you have `Expo Go` installed, enter the application and click on `Scan QR Code` and scan the displayed QR Code.
-
-That's it! That's for starting the mobile application. There are some further tweaking down the line, which we will go over once we have setup our backend server.
-
-<br>
-
-## Machine-Learning
-
-### Prerequisites
-
-This server utilises Python as its main module. Ensure that you have Python installed and all its configuration are properly defined.
-
-<br>
-
-### Installation Procedure
-
-You will require to install the packages defined in the `requirements.txt` file. In order to do so, you first have to navigate to the `Machine-Learning` folder in your console. Create a virtual environment `venv` (optional) and run `pip install -r requirements.txt` which will run through the text file and install the necessary packages listed in the file.
-
-As it contains a Machine Learning library, it will take some time to download, please wait patiently until it finishes.
-
-<br>
-
-### Starting the Server
-
-In order to start the server, you are required to run the command `fastapi run main.py`. It will take some time to load, but eventually a box will be displayed in the console like so:
-
-![Example Image 2](image-1.png)
-
-And that's it, you are done setting up this server as well.
-
-<br>
-
-## More Set Up
-
-After setting up your environments and ensure that they can run, there are a few more checks and things that we need to do before we can use the system. First, if you are using `Expo Go`, ensure that both your mobile device and your laptop or desktop are connected to the SAME ROUTER and able to ping each other.Second, ensure that BOTH of the servers are running simultaneously. Finally, you are required to change some things in the source code.
-
-<br>
-
-### Changing IP to match Server's IP
-
-You are required to change the IP in `/Mobile-App/screens/TakePictureScreen.tsx` and `/Mobile-App/screens/UploadFilesScreen.tsx` in the function `processData`, specifically the line `const imgCaptionUrl = 'http://192.168.16.15:8000/captions';` and modify the current IP to match the IPv4 of your laptop or desktop device. You can check for your laptop or desktop IP using `ipconfig` or similar tools that can be found online. If you are using an Android emulator, you can ping to `localhost` or `127.0.0.1` instead.
-Remember to add a `:8000` at the end of the IP.
-
-This is because your physical Android Device has a different IP address and it could not be able to ping to your laptop or desktop directly without knowing the actual IP address of the laptop.
-
-<br>
-
-### It Should Work Now. Probably.
-
-That's it, after everything all the features should be working now.
